@@ -12,12 +12,7 @@ Usage
 
 require 'i18n/backend/jargon'
 
-I18n::Backend::Jargon.configure do |config|
-  config.host = "http://localhost:3000/"
-  config.uuid = "61267710-4286-4db9-a074-3dd5ae9993c1"
-end
-
-I18n.backend = I18n::Backend::Jargon
+I18n.backend = I18n::Backend::Jargon.new({host: 'http://localhost:3000/', uuid: '61267710-4286-4db9-a074-3dd5ae9993c1'})
 
 ```
 
@@ -29,13 +24,7 @@ If a :cache is given, all backends pick one master to do the polling, all others
 
 require 'i18n/backend/jargon'
 
-I18n::Backend::Jargon.configure do |config|
-  config.host = "http://localhost:3000/"
-  config.uuid = "61267710-4286-4db9-a074-3dd5ae9993c1"
-  config.cache = Rails.cache
-end
-
-I18n.backend = I18n::Backend::Jargon
+I18n.backend = I18n::Backend::Jargon.new({host: 'http://localhost:3000/', uuid: '61267710-4286-4db9-a074-3dd5ae9993c1', cache: Rails.cache})
 
 I18n.t('some.key') == "Old value"
 # change in backend + wait 30 minutes
@@ -56,7 +45,7 @@ You should either use :default for all I18n.t or use a Chain, so when http is do
 
 ```Ruby
 I18n.backend = I18n::Backend::Chain.new(
-  I18n::Backend::Jargon,
+  I18n::Backend::Jargon.new({host: 'http://localhost:3000/', uuid: '61267710-4286-4db9-a074-3dd5ae9993c1'}),
   I18n::Backend::Simple.new
 )
 ```
