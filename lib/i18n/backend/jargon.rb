@@ -114,7 +114,7 @@ module I18n
         end
 
         def translations(locale)
-          download_and_cache_translations(locale)
+          translations_from_cache(locale)
           @translations[locale]
         end
 
@@ -147,7 +147,12 @@ module I18n
         end
 
         def translations_from_cache(locale)
-          @config[:cache].read(cache_key(locale))
+          translations = @config[:cache].read(cache_key(locale))
+          if translations.nil?
+            download_and_cache_translations(locale)
+          else
+            @translations[locale] = translations
+          end
         end
 
         def cache_key(locale)
