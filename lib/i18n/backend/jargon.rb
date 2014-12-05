@@ -39,9 +39,7 @@ module I18n
         end
 
         def available_locales
-          init_translations unless initialized?
-          download_localization
-          @available_locales
+          @available_locales ||= download_available_locales
         end
 
         def locale_path(locale)
@@ -74,6 +72,11 @@ module I18n
         end
 
         protected
+
+        def download_available_locales
+          init_translations unless initialized?
+          download_localization
+        end
 
         def init_translations
           @http_client  = EtagHttpClient.new(@config)
@@ -172,7 +175,7 @@ module I18n
 
         def download_localization
           @http_client.download(localization_path) do |result|
-            @available_locales = parse_localization(result)
+            parse_localization(result)
           end
         end
 
