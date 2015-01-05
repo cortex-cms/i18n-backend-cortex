@@ -180,7 +180,7 @@ module I18n
         end
 
         def parse_locale(body)
-          j = JSON.load(body)['locale']['data']
+          j = JSON.parse(JSON.parse(body)['locale']['json'])
           flat_hash(j).map{ |k,v| [k.sub(/\.$/, ''), v] }.to_h
         end
 

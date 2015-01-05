@@ -2,8 +2,6 @@
   "locale": {
     "id": 1,
     "name": "en",
-    "data": {
-      "hello": "Hello"
-    }
+    "json": "{ \"hello\": \"Hello\" }"
   }
 }
