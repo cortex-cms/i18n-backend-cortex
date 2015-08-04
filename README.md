@@ -1,4 +1,4 @@
-I18n-compatible backend for the [Cortex localization engine](cb-talent-development/cortex).
+I18n-compatible backend for the [Cortex](https://github.com/cbdr/cortex) localization engine.
 
 Install
 =======
