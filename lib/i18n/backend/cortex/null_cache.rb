@@ -1,6 +1,6 @@
 module I18n
   module Backend
-    class Jargon
+    class Cortex
       class NullCache
         def fetch(*args)
           yield
@@ -13,7 +13,6 @@ module I18n
           value
         end
       end
-
     end
   end
 end

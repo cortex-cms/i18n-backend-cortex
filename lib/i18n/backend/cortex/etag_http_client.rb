@@ -2,7 +2,7 @@ require 'faraday'
 
 module I18n
   module Backend
-    class Jargon
+    class Cortex
       class EtagHttpClient
         def initialize(options)
           @options = options

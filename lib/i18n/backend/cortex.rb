@@ -2,13 +2,13 @@ require 'i18n'
 require 'i18n/backend/transliterator'
 require 'i18n/backend/base'
 require 'gem_of_thrones'
-require 'i18n/backend/jargon/version'
-require 'i18n/backend/jargon/etag_http_client'
-require 'i18n/backend/jargon/null_cache'
+require 'i18n/backend/cortex/version'
+require 'i18n/backend/cortex/etag_http_client'
+require 'i18n/backend/cortex/null_cache'
 
 module I18n
   module Backend
-    class Jargon
+    class Cortex
       include ::I18n::Backend::Base
 
       def initialize(options)

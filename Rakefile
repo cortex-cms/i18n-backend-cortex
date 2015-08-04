@@ -2,7 +2,7 @@ require 'appraisal'
 require 'bundler/gem_tasks'
 
 task :default do
-  sh "bundle exec rake appraisal:install && bundle exec rake appraisal test"
+  sh 'bundle exec rake appraisal:install && bundle exec rake appraisal test'
 end
 
 require 'rake/testtask'
@@ -15,7 +15,7 @@ end
 # extracted from https://github.com/grosser/project_template
 rule /^version:bump:.*/ do |t|
   sh "git status | grep 'nothing to commit'" # ensure we are not dirty
-  index = ['major', 'minor','patch'].index(t.name.split(':').last)
+  index = %w(major minor patch).index(t.name.split(':').last)
   file = 'lib/i18n/backend/http/version.rb'
 
   version_file = File.read(file)
